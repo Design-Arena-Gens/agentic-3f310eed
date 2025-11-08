@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background-color: #050414;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: theme(fontFamily.body);
+  background: radial-gradient(circle at top, rgba(74, 177, 255, 0.12), transparent 60%),
+    radial-gradient(circle at bottom, rgba(156, 107, 255, 0.14), transparent 65%),
+    #050414;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, theme(colors.space.alien), theme(colors.space.neon), theme(colors.space.accent));
+  background-size: 200% 200%;
+  animation: gradientFlow 12s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 180deg, rgba(74, 177, 255, 0.12), rgba(156, 107, 255, 0.26), rgba(76, 255, 192, 0.12), rgba(74, 177, 255, 0.12));
+  animation: rotateGlow 18s linear infinite;
+  opacity: 0.35;
+}
+
+.card-glow::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: rgba(5, 4, 20, 0.88);
+  border-radius: inherit;
+  border: 1px solid rgba(76, 255, 192, 0.16);
+  box-shadow: 0 0 30px rgba(74, 177, 255, 0.15);
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
